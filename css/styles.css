@@ -10,6 +10,8 @@
   --btn-fltr-back: #f5f4fa;
   --text-mail-tel: rgba(255, 255, 255, 0.6);
   --btn-hero-back: #188ce8;
+
+  --amimhover: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -179,6 +181,23 @@ body {
 .mouse-link:focus {
   color: var(--main-blue);
 }
+
+.mouse-link {
+  position: relative;
+  transition: color var(--amimhover);
+}
+
+.list-nav .current::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  border-radius: 2px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--main-blue);
+}
+
 /* -------------------------------------------------MAIN--------------------------------------- */
 .hero {
   max-width: 1600px;
@@ -233,6 +252,8 @@ body {
   color: var(--main-light);
 
   cursor: pointer;
+
+  transition: color var(--amimhover), background-color var(--amimhover);
 }
 
 .button-hero:hover,
@@ -294,6 +315,32 @@ body {
   text-align: center;
   letter-spacing: 0.03em;
   color: var(--text-title-dark);
+}
+
+.we-do-thumb {
+  position: relative;
+}
+
+.we-do-overlay {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.we-do-overlay-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--main-light);
 }
 
 .our-work {
@@ -364,6 +411,9 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   margin-top: 16px;
+
+  transition: color var(--amimhover), fill var(--amimhover),
+    background-color var(--amimhover);
 }
 
 .social-icon {
@@ -396,6 +446,7 @@ body {
   color: #afb1b8;
   border: 1px solid #afb1b8;
   border-radius: 4px;
+  transition: color var(--amimhover), border-color var(--amimhover);
 }
 
 .client-icon {
@@ -484,6 +535,9 @@ body {
   color: var(--main-light);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+
+  transition: color var(--amimhover), fill var(--amimhover),
+    background-color var(--amimhover);
 }
 
 .footer-social-link:hover,
@@ -519,6 +573,8 @@ body {
   border-radius: 4px;
   border: transparent;
   cursor: pointer;
+  transition: color var(--amimhover), filter var(--amimhover),
+    background-color var(--amimhover);
 }
 
 .button-filtr-item:hover,
@@ -547,6 +603,7 @@ body {
 
 .portfolios-items {
   display: block;
+  transition: box-shadow var(--amimhover);
 }
 
 .portfolios-items:hover,
@@ -575,4 +632,84 @@ body {
   line-height: 1.87;
   letter-spacing: 0.03em;
   color: var(--text);
+}
+
+.portfolio-img-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-img-overlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(1000%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 63px 24px;
+  background: rgba(33, 150, 243, 0.9);
+  transition: transform var(--amimhover);
+}
+
+.portfolio-overlay-descr {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5555;
+  letter-spacing: 0.03em;
+  color: var(--main-light);
+}
+
+.portfolios-items:hover .portfolio-img-overlay,
+.portfolios-items:focus .portfolio-img-overlay {
+  transform: translateY(0%);
+}
+/* -------------------------------------------------MODAL--------------------------------------- */
+
+.backdrop {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity 500ms;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+  border-radius: 4px;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-btn-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
